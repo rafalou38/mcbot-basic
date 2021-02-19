@@ -3,6 +3,8 @@
 
 ## config
 
+place the config in the file `.env`
+
 - `SERVER`: IP of the server
 - `BOT_USERNAME`: username of the bot
 - `BOT_PASSWORD`: _(optional)_ password of the bot leave empty for cracked servers
@@ -20,6 +22,7 @@
 ## example config
 
 ```ini
+# .env
 BOT_USERNAME      = toto
 SERVER            = localhost
 SERVER_PORT       = 50642
