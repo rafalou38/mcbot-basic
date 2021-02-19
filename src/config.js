@@ -1,10 +1,11 @@
 require("dotenv").config();
 
 module.exports = {
+	VIEWER_PORT      : process.env.PORT,
 	BOT_USERNAME     : process.env.BOT_USERNAME || "mr. Bot",
 	BOT_PASSWORD     : process.env.BOT_PASSWORD,
 	SERVER           : process.env.BOT_PASSWORD || "localhost",
-	PORT             : process.env.port,
+	SERVER_PORT      : process.env.SERVER_PORT,
 	RECONNECT_DELAY  : process.env.RECONNECT_DELAY || 10,
 	MC_VERSION       : process.env.MC_VERSION || "1.16.5",
 	MOVE_DELAY_MAX   : process.env.MOVE_DELAY_MAX || 5,

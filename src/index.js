@@ -18,7 +18,7 @@ async function connect() {
 	first = true;
 	const bot = mineflayer.createBot({
 		host: config.SERVER,
-		port: config.PORT,
+		port: config.SERVER_PORT,
 		username: config.BOT_USERNAME,
 		password: config.BOT_PASSWORD,
 		version: config.MC_VERSION,
@@ -40,7 +40,7 @@ async function main(bot) {
 		);
 		if (!live) {
 			live = await mineflayerViewer(bot, {
-				port: 3451,
+				port: config.VIEWER_PORT,
 				firstPerson: true,
 			});
 		}
