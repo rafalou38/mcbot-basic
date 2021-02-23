@@ -62,7 +62,12 @@ async function setupEvents(bot) {
 		console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
 		setTimeout(connect, config.RECONNECT_DELAY * 1000);
 	});
-
+	bot.on("end", (reason) => {
+		bot.quit();
+		console.error("bot end 😭: ", error);
+		console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
+		setTimeout(connect, config.RECONNECT_DELAY * 1000);
+	});
 	bot.on("error", (error) => {
 		bot.quit();
 		console.error("oh no there was an error 😱: ", error);
