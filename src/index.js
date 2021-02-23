@@ -73,7 +73,6 @@ async function setupEvents(bot) {
 
 	if (action.loop)
 		bot.on("time", (_) => {
-			console.log("loop");
 			last_loop = Date.now();
 			action.loop(bot);
 		});
