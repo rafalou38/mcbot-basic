@@ -62,7 +62,7 @@ async function setupEvents(bot) {
 	bot.on("spawn", (_) => main(bot));
 
 	checkOnline = setInterval(() => {
-		if (last_loop + 5000 <= Date.now()) {
+		if (last_loop + 10000 <= Date.now()) {
 			bot.quit();
 			console.error("bot end 😭");
 			console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
@@ -73,6 +73,7 @@ async function setupEvents(bot) {
 
 	if (action.loop)
 		bot.on("time", (_) => {
+			console.log("loop");
 			last_loop = Date.now();
 			action.loop(bot);
 		});
