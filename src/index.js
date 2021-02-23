@@ -5,6 +5,9 @@ let live;
 let first = true;
 let action = require("./actions/goto");
 const armorManager = require("mineflayer-armor-manager");
+
+process.setMaxListeners(0);
+
 try {
 	action = require(`./actions/${config.MODE}`);
 } catch (err) {
