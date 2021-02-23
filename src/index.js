@@ -1,12 +1,13 @@
+process.setMaxListeners(20);
 const config = require("./config");
 const mineflayer = require("mineflayer");
 const mineflayerViewer = require("prismarine-viewer").mineflayer;
 let live;
 let first = true;
 let action = require("./actions/goto");
+let checkOnline = setInterval(() => {});
+let last_loop = Date.now();
 const armorManager = require("mineflayer-armor-manager");
-
-process.setMaxListeners(0);
 
 try {
 	action = require(`./actions/${config.MODE}`);
@@ -60,14 +61,21 @@ async function main(bot) {
 async function setupEvents(bot) {
 	bot.on("spawn", (_) => main(bot));
 
-	bot.on("end", (reason) => {
-		bot.quit();
-		console.error("bot end 😭: ", reason);
-		console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
-		setTimeout(connect, config.RECONNECT_DELAY * 1000);
-	});
+	checkOnline = setInterval(() => {
+		if (last_loop + 5000 <= Date.now()) {
+			bot.quit();
+			console.error("bot end 😭");
+			console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
+			setTimeout(connect, config.RECONNECT_DELAY * 1000);
+			clearInterval(checkOnline);
+		}
+	}, 2000);
 
-	if (action.loop) bot.on("time", (_) => action.loop(bot));
+	if (action.loop)
+		bot.on("time", (_) => {
+			last_loop = Date.now();
+			action.loop(bot);
+		});
 }
 
 connect();
