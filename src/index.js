@@ -64,7 +64,7 @@ async function setupEvents(bot) {
 	});
 	bot.on("end", (reason) => {
 		bot.quit();
-		console.error("bot end 😭: ", error);
+		console.error("bot end 😭: ", reason);
 		console.info(`reconnecting in ${config.RECONNECT_DELAY}s ⏳`);
 		setTimeout(connect, config.RECONNECT_DELAY * 1000);
 	});
