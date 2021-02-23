@@ -20,7 +20,11 @@ async function gen_goal(bot) {
 
 module.exports.loop = async function (bot) {
 	let current_pos = bot.entity.position.floored();
-
+	console.log({
+		current_pos,
+		last_pos,
+		time_locked,
+	});
 	if (
 		(current_pos?.x == last_pos?.x &&
 			current_pos?.y == last_pos?.y &&
