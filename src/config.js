@@ -13,4 +13,5 @@ module.exports = {
 	GOTO_MAX_DISTANCE: process.env.GOTO_MAX_DISTANCE || 4000,
 	GOTO_MIN_DISTANCE: process.env.GOTO_MIN_DISTANCE || 1000,
 	START_CMD: process.env.START_CMD,
+	VIEWER: process.env.VIEWER,
 };

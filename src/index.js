@@ -38,7 +38,7 @@ async function main(bot) {
 		console.log(
 			`username: ${bot.username}\nversion: ${bot.version}\nserver: ${config.SERVER}\n`
 		);
-		if (!live) {
+		if (!live && config.VIEWER != "false") {
 			live = await mineflayerViewer(bot, {
 				port: config.VIEWER_PORT,
 				firstPerson: true,
