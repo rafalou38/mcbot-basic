@@ -45,6 +45,11 @@ async function main(bot) {
 			});
 		}
 		if (action.main) await action.main(bot);
+
+		if (config.START_CMD) {
+			bot.chat(config.START_CMD);
+		}
+
 		first = false;
 	}
 }
